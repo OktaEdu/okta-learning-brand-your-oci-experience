@@ -1,0 +1,46 @@
+{
+  "name": "okta-learning-brand-your-oci-experience",
+  "version": "1.0",
+  "description": "An Okta Learning lab.",
+  "license": "Apache",
+  "author": "Okta",
+  "bugs": {
+    "url": "https://github.com/OktaEdu/okta-learning-brand-your-oci-experience/issues"
+  },
+  "homepage": "https://github.com/OktaEdu/okta-learning-brand-your-oci-experience/blob/ondemand/README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OktaEdu/okta-learning-brand-your-oci-experience.git"
+  },
+  "scripts": {},
+  "keywords": [
+    "okta",
+    "oauth2",
+    "openid",
+    "oidc",
+    "auth",
+    "authentication",
+    "samples",
+    "labs"
+  ],
+  "dependencies": {
+    "brace-expansion": "^1.1.12",
+    "concurrently": "^7.3.0",
+    "cross-spawn": "^7.0.5",
+    "eslint": "^9.0.0",
+    "prettier": "^2.7.1",
+    "word-wrap": "^1.2.4"
+  },
+  "prettier": {
+    "printWidth": 80,
+    "singleQuote": true,
+    "arrowParens": "always",
+    "bracketSpacing": true,
+    "endOfLine": "auto",
+    "quoteProps": "consistent",
+    "semi": true,
+    "tabWidth": 2,
+    "trailingComma": "es5",
+    "useTabs": false
+  }
+}
