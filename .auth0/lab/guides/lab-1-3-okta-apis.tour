@@ -1,0 +1,56 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "#3 - Manage brands and themes with Okta APIs",
+  "steps": [
+    {
+      "title": "Lab overview",
+      "description": "  ## Create Okta Users\n  \n  🎯 **Objective**:   Manage brands and themes with the Okta APIs.\n\n  🎬 **Scenario**:    Okta Ice would be able to automate brand management via APIs.\n\n  ⏱️ **Duration**:   15 minutes"
+    },
+    {
+      "title": "Create and store an Okta API key",
+      "description": "## Create and store an Okta API key\n\n> For simplicity, we will generate an Okta API key associated with the Super Admin account and store this in an [account-specific GitHub secret](https://docs.github.com/en/codespaces/managing-your-codespaces/managing-your-account-specific-secrets-for-github-codespaces#adding-a-secret) . In production, you will want to create short-lived, [scoped OAuth 2.0 access tokens](https://developer.okta.com/docs/guides/implement-oauth-for-okta/main/).\n\n1. From the Okta Admin Console, go to **Security** > **API**. \n2. Select the **Tokens** tab.\n3. Select the **Create token** button.\n4. Name your token **Okta Lab** and select **Any IP**.\n5. Select the **Create token** button.\n6. Copy the token value that is presented in the next window.\n7. In a new tab, go to https://github.com\n8. On the Github page, select your profile picture at the top right, then select **Settings**\n9. In the *Code, planning, and automation* section of the sidebar, select **Codespaces**.\n10. To the right of *Codespaces secrets*, select **New secret**.\n11. Under *Name*, name your secret **OKTA_API_TOKEN**.\n12. Under *Value*, paste the token value you copied in Step 6.\n13. Select the *Repository access* drop-down menu, add **OktaEdu/okta-learning-brand-your-oci-experience**.\n14. Select **Add Secret**.\n16. When prompted in Codespaces, select the **Reload to apply** button. This must be done for your environment to have access to this secret.\n\n### Test your secrets\nLet's check if the appropriate GitHub secrets are set. Select [this link](command:codetour.sendTextToTerminal?[\"echo BASE_OKTA_URL: $BASE_OKTA_URL; if test $OKTA_API_TOKEN; then echo OKTA_API_TOKEN is set ✅; else echo OKTA_API_TOKEN is NOT set ❌; fi\"]) and check the results in the terminal. \n\n\nIf set up correctly, you should see something like:\n\n```\nBASE_OKTA_URL: https://integrator-xxxxxxx.okta.com\nOKTA_API_TOKEN is set ✅\n```",
+      "selection": {
+        "start": {
+          "line": 27,
+          "character": 1
+        },
+        "end": {
+          "line": 30,
+          "character": 4
+        }
+      }
+    },
+    {
+      "title": "List brands via the Brands API",
+      "description": "## List brands via the Brands API\n\nNext we will call the Okta Brands API to list the brands you have configured. This should include the default brand and the Okta Ice brand we created in the Okta Admin Console.\n\n1. Go to https://developer.okta.com/docs/api/openapi/okta-management/management/tag/Brands/ and examine the endpoint for **List all brands**. \n2. Next, we'll run the curl command from the documentation using the environment variables we have set. **Click on the command below** to run it in the Terminal:\n>> curl -s -X GET \"$BASE_OKTA_URL/api/v1/brands\" -H \"Authorization: SSWS $OKTA_API_TOKEN\" | jq .\n\nYou should see a response beginning with something that looks like:\n```\n[\n  {\n    \"id\": \"bndw76g88cplgLDqo697\",\n    \"name\": \"Okta Ice\",...\n```\n\n3. Copy the **id**.",
+      "selection": {
+        "start": {
+          "line": 8,
+          "character": 4
+        },
+        "end": {
+          "line": 10,
+          "character": 37
+        }
+      }
+    },
+    {
+      "title": "Create and add a test user to the Customer group",
+      "description": "## Retrieve the theme associated with a brand\n\nNext, we'll retrieve the theme that's associated with the Okta Ice brand using the List all themes endpoint specified here: https://developer.okta.com/docs/api/openapi/okta-management/management/tag/Themes/#tag/Themes/operation/listBrandThemes \n\n1. In the terminal, set a local environment variable called BRAND_ID with the following command (paste the value you copied in the previous step after the equal sign.)\n    ```\n    export BRAND_ID=\n    ```\n\n1. Now **click on the command** below to run the curl command from the API documentation:\n\n>> curl -s -X GET \"$BASE_OKTA_URL/api/v1/brands/$BRAND_ID/themes\" -H \"Authorization: SSWS $OKTA_API_TOKEN\" | jq\n\nThe response will have details about the theme's configuration and should look something like:\n\n```\n[\n  {\n   \"id\": \"thewesqszb8dCjGOL697\",\n    \"logo\": \"https://ok14static.oktacdn.com/fs/bco/1/fs0wf5bx0zlSgG1dO697\",\n    \"favicon\": \"https://ok14static.oktacdn.com/bc/image/fileStoreRecord?id=fs0wf5bbhgJN1OHNL697\",\n    \"backgroundImage\": \"https://ok14static.oktacdn.com/fs/bco/7/fs0wf59stjRWhIV8z697\",\n    \"primaryColorHex\": \"#2d75bb\",\n    \"primaryColorContrastHex\": \"#ffffff\",\n    \"secondaryColorHex\": \"#c7e5f5\",\n    \"secondaryColorContrastHex\": \"#000000\",\n    \"signInPageTouchPointVariant\": \"BACKGROUND_IMAGE\",\n    \"endUserDashboardTouchPointVariant\": \"FULL_THEME\",\n    \"errorPageTouchPointVariant\": \"BACKGROUND_IMAGE\",\n    \"emailTemplateTouchPointVariant\": \"FULL_THEME\",\n    \"loadingPageTouchPointVariant\": \"NONE\",\n    \"_links\": { ...\n```",
+      "selection": {
+        "start": {
+          "line": 6,
+          "character": 5
+        },
+        "end": {
+          "line": 8,
+          "character": 8
+        }
+      }
+    },
+    {
+      "title": "Lab checkpoint",
+      "description": "## ✅ Checkpoint\n\nYou now have a test user in the Franchisee group and a test user in the Customer group.\n"
+    }
+  ]
+}
