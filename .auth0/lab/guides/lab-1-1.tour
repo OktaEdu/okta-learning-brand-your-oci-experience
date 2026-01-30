@@ -5,7 +5,7 @@
   "steps": [
     {
       "title": "Okta org",
-      "description": "## Prerequisites: Okta org\n\nThis lab assumes you already have set up an Okta org. If you haven't already, [register](https://developer.okta.com/signup/) Okta Integrator Free Plan under Okta Workforce Identity.\n\n\nDuring this process you must:\n\n1. Verify your email.\n2. Set your password.\n3. [Enroll in Okta Verify](https://help.okta.com/eu/en-us/content/topics/end-user/ov-overview.htm?cshid=csh-user-ov-overview).\n\nOnce you are done, you will be logged in to your Okta Admin Console as a [Super Admin](https://help.okta.com/en-us/content/topics/security/administrators-super-admin.htm)."
+      "description": "## Prerequisites: Okta org\n\nThis lab assumes you already have set up an Okta org. If you haven't already, [register](https://developer.okta.com/signup/) Okta Integrator Free Plan under Okta Platform\n\n\nDuring this process you must:\n\n1. Verify your email.\n2. Set your password.\n3. [Enroll in Okta Verify](https://help.okta.com/eu/en-us/content/topics/end-user/ov-overview.htm?cshid=csh-user-ov-overview).\n\nOnce you are done, you will be logged in to your Okta Admin Console as a [Super Admin](https://help.okta.com/en-us/content/topics/security/administrators-super-admin.htm)."
     },
     {
       "title": "GitHub secrets",
